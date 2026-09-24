@@ -1,42 +1,52 @@
 ---
-const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
-import { Image } from "astro:assets";
-const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+const { title, img, desc, url, badge, tags, target } = Astro.props;
+const linkTarget = target || (url && (url.startsWith('http') || url.startsWith('//')) ? '_blank' : '_self');
+const linkRel = linkTarget === '_blank' ? 'noopener noreferrer' : undefined;
+
+let initialSrc = img;
+if (initialSrc && !initialSrc.startsWith('/') && !initialSrc.startsWith('http')) {
+  initialSrc = '/' + initialSrc;
+}
 ---
 
-<div
-  class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
->
-  <a href={url} target={target}>
-    <div class="hero-content flex-col md:flex-row">
+<div class="rounded-2xl bg-base-100 hover:shadow-lg transition-all duration-300 border border-base-300/60 overflow-hidden mb-6 group">
+  <a href={url} target={linkTarget} rel={linkRel} class="block">
+    <div class="hero-content flex-col md:flex-row p-5 gap-6 items-start">
       {
-        img && (
-          <Image
-            src={img}
-            width={750}
-            height={422}
-            format="webp"
-            alt={title}
-            class="max-w-full md:max-w-[13rem] rounded-lg"
-          />
+        initialSrc && (
+          <div class="w-full md:w-5/12 max-w-[260px] h-44 rounded-xl overflow-hidden bg-base-200 border border-base-300 shrink-0">
+            <img
+              src={encodeURI(initialSrc)}
+              data-orig={initialSrc}
+              alt={title}
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              onerror="const orig = this.getAttribute('data-orig'); if (!this.dataset.step) { this.dataset.step = '1'; this.src = encodeURI('/Fotoğraflar' + (orig.startsWith('/') ? orig : '/' + orig)); } else if (this.dataset.step === '1') { this.dataset.step = '2'; if (orig.endsWith('.jpeg')) { this.src = encodeURI(orig.replace('.jpeg', '.jpg')); } else if (orig.endsWith('.jpg')) { this.src = encodeURI(orig.replace('.jpg', '.jpeg')); } else { this.src = '/post_img.webp'; } } else { this.src = '/post_img.webp'; }"
+            />
+          </div>
         )
       }
-      <div class="grow w-full">
-        <h1 class="text-xl font-bold">
-          {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
-        </h1>
-        <p class="py-1 text-1xl">{desc}</p>
-        <div class="card-actions justify-end">
-          {
-            tags &&
-              tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                  {tag}
-                </a>
-              ))
-          }
+      <div class="grow w-full flex flex-col justify-between min-h-[9.5rem]">
+        <div>
+          <div class="flex items-center gap-2 flex-wrap mb-1.5">
+            <h2 class="text-lg md:text-xl font-bold text-base-content group-hover:text-primary transition-colors">
+              {title}
+            </h2>
+            {badge && <span class="badge badge-primary badge-sm font-semibold">{badge}</span>}
+          </div>
+          <p class="text-sm text-base-content/80 leading-relaxed line-clamp-3 md:line-clamp-none">
+            {desc}
+          </p>
         </div>
+        {
+          tags && tags.length > 0 && (
+            <div class="card-actions justify-start gap-1.5 mt-3 flex-wrap">
+              {tags.map((tag) => (
+                <span class="badge badge-outline badge-sm text-xs opacity-75">{tag}</span>
+              ))}
+            </div>
+          )
+        }
       </div>
     </div>
   </a>

@@ -18,20 +18,34 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="lofi">
+<html lang="en" data-theme="eu_theme" class="scroll-smooth">
   <head>
-    <BaseHead title={title} description={description} image={image} , ogType={ogType} />
+    <BaseHead title={title} description={description} image={image} ogType={ogType} />
+    <!-- Modern European Typography Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="image" href="/profil fotoğrafı.jpg" />
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      }
+    </style>
     {TRANSITION_API && <ViewTransitions />}
   </head>
-  <body>
-    <div class="bg-base-100 drawer lg:drawer-open">
+  <body class="bg-base-100 text-base-content selection:bg-primary selection:text-white">
+    <div class="bg-base-100 drawer lg:drawer-open min-h-screen">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content bg-base-100">
-        <Header title={SITE_TITLE} />
-        <div class="md:flex md:justify-center">
-          <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
-            <slot />
-          </main>
+      <div class="drawer-content bg-base-100 flex flex-col justify-between">
+        <div>
+          <Header title={SITE_TITLE} />
+          <div class="md:flex md:justify-center">
+            <main class="p-6 pt-8 lg:max-w-[950px] max-w-[100vw] w-full">
+              <slot />
+            </main>
+          </div>
         </div>
         <Footer />
       </div>

@@ -3,90 +3,299 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
+<BaseLayout title="Curriculum Vitae | Kuzey Çağan Gebrecioğlu" sideBarActiveItemID="cv">
+  <!-- Header & Actions -->
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+    <div>
+      <h1 class="text-3xl font-extrabold tracking-tight text-base-content">
+        <span class="lang-en">Curriculum Vitae</span>
+        <span class="lang-tr hidden">Özgeçmiş (CV)</span>
+      </h1>
+      <p class="text-sm text-base-content/75 mt-1 font-medium">
+        <span class="lang-en">European Solidarity Corps (ESC) Volunteering & International Youth Work Candidate</span>
+        <span class="lang-tr hidden">Avrupa Dayanışma Programı (ESC) & Uluslararası Gençlik Çalışmaları Adayı</span>
+      </p>
+    </div>
+    <div class="flex gap-2.5">
+      <a 
+        href="mailto:kuzeygebrecioglu@gmail.com" 
+        class="btn btn-primary btn-sm rounded-lg shadow-sm"
+      >
+        <span class="lang-en">Contact via Email</span>
+        <span class="lang-tr hidden">E-posta Gönder</span>
+      </a>
+      <a 
+        href="https://www.linkedin.com/in/kuzey-%C3%A7a%C4%9Fan-gebrecio%C4%9Flu-607550235" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn-outline btn-sm rounded-lg"
+      >
+        <span class="lang-en">LinkedIn Profile ↗</span>
+        <span class="lang-tr hidden">LinkedIn Profili ↗</span>
+      </a>
+    </div>
   </div>
 
-  <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  <!-- Key Metrics (ESC Focused, 3 Ülke Removed) -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 mb-10">
+    <div class="p-4 rounded-xl bg-base-200/70 border border-base-300 text-center">
+      <div class="text-2xl font-black text-primary">2,500+</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-0.5">
+        <span class="lang-en">Participants Reached</span>
+        <span class="lang-tr hidden">Ulaşılan Katılımcı</span>
+      </div>
+    </div>
+    <div class="p-4 rounded-xl bg-base-200/70 border border-base-300 text-center">
+      <div class="text-2xl font-black text-primary">60+</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-0.5">
+        <span class="lang-en">NFE Workshops Facilitated</span>
+        <span class="lang-tr hidden">Kolaylaştırılan Atölye</span>
+      </div>
+    </div>
+    <div class="p-4 rounded-xl bg-base-200/70 border border-base-300 text-center">
+      <div class="text-2xl font-black text-primary">ESC Ready</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-0.5">
+        <span class="lang-en">Short & Long-term Mobility</span>
+        <span class="lang-tr hidden">Gönüllülüğe Hazır Aday</span>
+      </div>
+    </div>
+    <div class="p-4 rounded-xl bg-base-200/70 border border-base-300 text-center">
+      <div class="text-2xl font-black text-primary">TÜBİTAK</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-0.5">
+        <span class="lang-en">National Research Grantee</span>
+        <span class="lang-tr hidden">Ulusal Araştırma Desteği</span>
+      </div>
+    </div>
   </div>
 
+  <!-- Executive ESC Motivation Summary -->
+  <div class="card bg-base-200/50 border border-base-300 p-6 rounded-2xl mb-10 shadow-sm">
+    <h2 class="text-lg font-bold text-base-content mb-2 flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+      <span class="lang-en">ESC Profile & Executive Summary</span>
+      <span class="lang-tr hidden">ESC Profili & Yönetici Özet</span>
+    </h2>
+    <p class="text-sm leading-relaxed text-base-content/85 text-justify lang-en">
+      Multidisciplinary youth professional, non-formal educator, and policy researcher with proven field experience in European youth inclusion, disability accessibility, sustainability, and quantitative policy modeling. Director of Strategic Partnerships at Let's Do It! Türkiye and lead organizer for LCOY 2026. Skilled facilitator in Erasmus+ KA220-YOU projects across France, Albania, and Turkey, designing non-formal learning toolkits tailored for deaf youth and Paralympic athletes. Holds a TÜBİTAK 2209-A national research grant in security deterrence modeling alongside programming experience (Python, web engineering). Actively seeking European Solidarity Corps (ESC) volunteering opportunities to contribute youth facilitation, inclusion expertise, and project leadership to European host organizations.
+    </p>
+    <p class="text-sm leading-relaxed text-base-content/85 text-justify lang-tr hidden">
+      Avrupa gençlik kapsayıcılığı, engelli erişilebilirliği, sürdürülebilirlik ve nicel politika modellemesi alanlarında saha deneyimine sahip multidisipiner gençlik çalışanı, yaygın eğitim eğitmeni ve araştırmacı. Let's Do It! Türkiye Stratejik Ortaklıklar Direktörü ve LCOY 2026 Organizatörü. Fransa, Arnavutluk ve Türkiye'de işitme engelli gençler ve Paralimpik sporcular için geliştirilen Erasmus+ KA220-YOU projelerinde aktif kolaylaştırıcı. TÜBİTAK 2209-A lisans araştırma bursiyeri ve bilgisayar programcılığı altyapısına sahip. Avrupa'daki ev sahibi kuruluşlara gençlik çalışması, sosyal kapsayıcılık ve proje yönetimi alanlarında katkı sunmak üzere Avrupa Dayanışma Programı (ESC) fırsatları aramaktadır.
+    </p>
+  </div>
+
+  <!-- European & International Project Experience -->
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
+    <h2 class="text-2xl font-bold tracking-tight text-base-content flex items-center gap-2">
+      <span>🇪🇺</span>
+      <span class="lang-en">European & International Projects (Erasmus+)</span>
+      <span class="lang-tr hidden">Avrupa & Uluslararası Projeler (Erasmus+)</span>
+    </h2>
   </div>
 
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
+      title="Trainer & Inclusion Facilitator | Inclusive Resilience Project (Erasmus+ KA220-YOU)"
+      subtitle="Sep 2025 · Tirana, Albania"
+    >
+      <ul class="list-disc ml-4 space-y-1 text-sm text-base-content/80 mt-2">
+        <li>
+          <span class="lang-en">Facilitated non-formal capacity-building workshops on climate adaptation and disaster resilience tailored for young Paralympic athletes under the coordination of the Turkish National Paralympic Committee.</span>
+          <span class="lang-tr hidden">Türkiye Milli Paralimpik Komitesi koordinasyonunda genç Paralimpik sporcular için iklim adaptasyonu ve afet direnci konularında yaygın eğitim atölyeleri düzenlendi.</span>
+        </li>
+        <li>
+          <span class="lang-en">Promoted disability inclusion, peer learning, and accessibility standards across international youth delegates aligned with the EU Youth Strategy.</span>
+          <span class="lang-tr hidden">AB Gençlik Stratejisi doğrultusunda uluslararası genç delegeler arasında engelli kapsayıcılığı, akran öğrenimi ve erişilebilirlik standartları teşvik edildi.</span>
+        </li>
+      </ul>
+    </TimeLineElement>
+
     <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
+      title="Trainer & Educational Designer | Hearken the Youth Project (Erasmus+ KA220-YOU)"
+      subtitle="May 2025 & Sep 2025 · Strasbourg, France & Ankara, Turkey"
+    >
+      <ul class="list-disc ml-4 space-y-1 text-sm text-base-content/80 mt-2">
+        <li>
+          <span class="lang-en">Co-designed and facilitated non-formal educational toolkits promoting social inclusion of deaf youth through sports in Strasbourg and Ankara.</span>
+          <span class="lang-tr hidden">Strasbourg ve Ankara'da işitme engelli gençlerin spor yoluyla sosyal kapsayıcılığını destekleyen yaygın eğitim araç kitleri tasarlandı ve uygulandı.</span>
+        </li>
+        <li>
+          <span class="lang-en">Integrated environmental literacy and sign-language friendly sports activities into reusable European toolkits adopted by partner NGOs.</span>
+          <span class="lang-tr hidden">Çevre okuryazarlığı ve işaret dili dostu spor aktiviteleri, ortak STK'lar tarafından benimsenen yeniden kullanılabilir Avrupa araç kitlerine entegre edildi.</span>
+        </li>
+      </ul>
+    </TimeLineElement>
   </div>
 
+  <!-- Professional Work Experience -->
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
+    <h2 class="text-2xl font-bold tracking-tight text-base-content flex items-center gap-2">
+      <span>💼</span>
+      <span class="lang-en">Professional Work Experience</span>
+      <span class="lang-tr hidden">Mesleki Deneyim</span>
+    </h2>
   </div>
 
   <div class="time-line-container mb-10">
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="Director of Strategic Partnerships"
+      subtitle="Jun 2026 – Present · Let's Do It! Türkiye & LCOY 2026 (Turkey)"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+      <ul class="list-disc ml-4 space-y-1 text-sm text-base-content/80 mt-2">
+        <li>
+          <span class="lang-en">Steer corporate, public, and NGO partnership strategies; cultivate institutional stakeholder alliances aligned with UN SDGs and environmental governance.</span>
+          <span class="lang-tr hidden">Kurumsal, kamu ve STK ortaklık stratejilerini yönetmek; BM SKA'ları ve çevre yönetişimi doğrultusunda kurumsal paydaş ittifakları oluşturmak.</span>
+        </li>
+        <li>
+          <span class="lang-en">Lead resource mobilization and sponsorship acquisition for LCOY Türkiye (Local Conference of Youth on Climate Change, officially recognized by UNFCCC YOUNGO).</span>
+          <span class="lang-tr hidden">LCOY Türkiye (UNFCCC YOUNGO tarafından resmi olarak tanınan İklim Değişikliği Yerel Gençlik Konferansı) için kaynak mobilizasyonu ve sponsor edinimi.</span>
+        </li>
+        <li>
+          <span class="lang-en">Structure bilateral cooperation protocols and multi-stakeholder agreements for national and international sustainability initiatives.</span>
+          <span class="lang-tr hidden">Ulusal ve uluslararası sürdürülebilirlik girişimleri için ikili işbirliği protokolleri ve çok paydaşlı anlaşmalar yapılandırmak.</span>
+        </li>
+      </ul>
     </TimeLineElement>
+
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="Training Coordinator & Non-Formal Educator"
+      subtitle="Jan 2024 – Mar 2025 · Let's Do It! Türkiye (Ankara, Turkey)"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+      <ul class="list-disc ml-4 space-y-1 text-sm text-base-content/80 mt-2">
+        <li>
+          <span class="lang-en">Designed and executed 60+ interactive non-formal training modules on circular economy, waste management, and civic action, engaging over 2,500 participants nationwide.</span>
+          <span class="lang-tr hidden">Döngüsel ekonomi, atık yönetimi ve sivil eylem konularında 60'tan fazla interaktif yaygın eğitim modülü tasarlanıp ülke çapında 2.500'den fazla katılımcıyla uygulandı.</span>
+        </li>
+        <li>
+          <span class="lang-en">Managed recruitment, onboarding, and impact assessment for a nationwide volunteer trainer network across multiple university chapters.</span>
+          <span class="lang-tr hidden">Birden fazla üniversite topluluğu genelinde gönüllü eğitmen ağı için işe alım, oryantasyon ve etki değerlendirmesi yönetildi.</span>
+        </li>
+        <li>
+          <span class="lang-en">Ensured programmatic alignment with Erasmus+ KA220-YOU educational quality indicators and delivered comprehensive post-activity impact reports.</span>
+          <span class="lang-tr hidden">Erasmus+ KA220-YOU eğitim kalite göstergeleriyle programatik uyum sağlanıp kapsamlı faaliyet sonrası etki raporları hazırlandı.</span>
+        </li>
+      </ul>
     </TimeLineElement>
+
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="Research Intern"
+      subtitle="Jul 2025 – Sep 2025 · Transparency International Türkiye (Istanbul, Turkey)"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+      <ul class="list-disc ml-4 space-y-1 text-sm text-base-content/80 mt-2">
+        <li>
+          <span class="lang-en">Contributed to evidence-based governance and anti-corruption policy research under the MATRA Project (supported by the Embassy of the Kingdom of the Netherlands).</span>
+          <span class="lang-tr hidden">MATRA Projesi (Hollanda Krallığı Büyükelçiliği desteğiyle) kapsamında kanıta dayalı yönetişim ve yolsuzlukla mücadele politika araştırmalarına katkı sağlandı.</span>
+        </li>
+        <li>
+          <span class="lang-en">Conducted quantitative and qualitative analysis on public procurement registries within the Integrity Watch Project, assisting in drafting published transparency briefs.</span>
+          <span class="lang-tr hidden">Integrity Watch Projesi kapsamında kamu ihale kayıtları üzerinde nicel ve nitel analiz yapılarak yayınlanan şeffaflık özetlerinin hazırlanmasına katkıda bulunuldu.</span>
+        </li>
+      </ul>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Foreign Policy Research Intern"
+      subtitle="Aug 2024 – Sep 2024 · Foreign Policy Institute / Dış Politika Enstitüsü (Ankara)"
+    >
+      <ul class="list-disc ml-4 space-y-1 text-sm text-base-content/80 mt-2">
+        <li>
+          <span class="lang-en">Authored analytical weekly policy briefs evaluating geopolitical developments and European security architectures.</span>
+          <span class="lang-tr hidden">Jeopolitik gelişmeleri ve Avrupa güvenlik mimarilerini değerlendiren haftalık analitik politika bültenleri kaleme alındı.</span>
+        </li>
+      </ul>
     </TimeLineElement>
   </div>
 
+  <!-- Education & Academic Credentials -->
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
+    <h2 class="text-2xl font-bold tracking-tight text-base-content flex items-center gap-2">
+      <span>🎓</span>
+      <span class="lang-en">Education & Academic Qualifications</span>
+      <span class="lang-tr hidden">Eğitim & Akademik Geçmiş</span>
+    </h2>
   </div>
 
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-  </ul>
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Bachelor of Arts in International Relations (English Medium)"
+      subtitle="Graduated Jun 2026 · Aydın Adnan Menderes University (Transferred from İzmir Demokrasi University, 2021–2024)"
+    >
+      <span class="lang-en">Rigorous 4-year curriculum centered on European integration, diplomatic history, security studies, public diplomacy, and international law.</span>
+      <span class="lang-tr hidden">Avrupa entegrasyonu, diplomatik tarih, güvenlik çalışmaları, kamu diplomasisi ve uluslararası hukuk odaklı 4 yıllık kapsamlı müfredat.</span>
+    </TimeLineElement>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
+    <TimeLineElement
+      title="Associate Degree in Computer Programming"
+      subtitle="Oct 2024 – Present · Anadolu University"
+    >
+      <span class="lang-en">Focus on software engineering foundations, relational databases, and Python programming to bridge social sciences with computational tools.</span>
+      <span class="lang-tr hidden">Sosyal bilimler ile hesaplamalı araçlar arasında köprü kurmak için yazılım mühendisliği temelleri, ilişkisel veritabanları ve Python programlama odaklı.</span>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Jean Monnet Summer School: The EU & Hybrid Threats in the Wider Neighbourhood"
+      subtitle="Sep 2023 · Kadir Has University, Istanbul (5 ECTS · Grade: AA)"
+    >
+      <span class="lang-en">Specialized Jean Monnet module examining European Union crisis response mechanisms and hybrid security challenges.</span>
+      <span class="lang-tr hidden">Avrupa Birliği kriz müdahale mekanizmalarını ve hibrit güvenlik tehditlerini inceleyen özel Jean Monnet modülü.</span>
+    </TimeLineElement>
   </div>
 
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-  </ul>
+  <!-- Academic Research & Grants -->
+  <div class="mb-5">
+    <h2 class="text-2xl font-bold tracking-tight text-base-content flex items-center gap-2">
+      <span>🔬</span>
+      <span class="lang-en">Research Grants & Fellowships</span>
+      <span class="lang-tr hidden">Araştırma Bursları & Projeler</span>
+    </h2>
+  </div>
+
+  <div class="card bg-base-200/50 border border-base-300 p-5 rounded-xl mb-10">
+    <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+      <h3 class="font-bold text-base text-base-content">TÜBİTAK 2209-A Undergraduate Research Grant | Principal Investigator</h3>
+      <span class="badge badge-primary badge-sm font-semibold">Funded / Grantee</span>
+    </div>
+    <p class="text-xs font-semibold text-primary mb-2">Project: “Analysis of the Turkish-Type Deterrence Model (TTCM) as a Conflict Management Tool: Cyprus Case Study & Applicability to the Israeli-Palestinian Conflict”</p>
+    <p class="text-sm text-base-content/80">
+      <span class="lang-en">Principal Investigator for a qualitative security case study supervised by Assoc. Prof. Dr. Ali Bilgenoğlu at Aydın Adnan Menderes University.</span>
+      <span class="lang-tr hidden">Aydın Adnan Menderes Üniversitesi'nde Doç. Dr. Ali Bilgenoğlu danışmanlığında yürütülen nitel güvenlik vaka çalışmasının baş araştırmacısı.</span>
+    </p>
+  </div>
+
+  <!-- Languages (CEFR) -->
+  <div class="card bg-base-200/40 border border-base-300 p-5 rounded-xl mb-6">
+    <h3 class="text-xs font-bold uppercase tracking-wider text-primary mb-3">
+      <span class="lang-en">Language Proficiencies (CEFR Framework)</span>
+      <span class="lang-tr hidden">Dil Yetkinlikleri (CEFR Çerçevesi)</span>
+    </h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+      <div class="p-2.5 rounded-lg bg-base-100 border border-base-300">
+        <div class="font-bold text-sm">
+          <span class="lang-en">Turkish</span>
+          <span class="lang-tr hidden">Türkçe</span>
+        </div>
+        <div class="text-xs text-primary font-semibold mt-0.5"><span class="lang-en">Native / C2</span><span class="lang-tr hidden">Ana Dil / C2</span></div>
+      </div>
+      <div class="p-2.5 rounded-lg bg-base-100 border border-base-300">
+        <div class="font-bold text-sm">
+          <span class="lang-en">English</span>
+          <span class="lang-tr hidden">İngilizce</span>
+        </div>
+        <div class="text-xs text-primary font-semibold mt-0.5"><span class="lang-en">C1 (Fluent / Academic)</span><span class="lang-tr hidden">C1 (Akıcı / Akademik)</span></div>
+      </div>
+      <div class="p-2.5 rounded-lg bg-base-100 border border-base-300">
+        <div class="font-bold text-sm">
+          <span class="lang-en">Azerbaijani</span>
+          <span class="lang-tr hidden">Azerbaycanca</span>
+        </div>
+        <div class="text-xs text-primary font-semibold mt-0.5"><span class="lang-en">B1 (Independent)</span><span class="lang-tr hidden">B1 (Bağımsız)</span></div>
+      </div>
+      <div class="p-2.5 rounded-lg bg-base-100 border border-base-300">
+        <div class="font-bold text-sm">
+          <span class="lang-en">French</span>
+          <span class="lang-tr hidden">Fransızca</span>
+        </div>
+        <div class="text-xs text-primary font-semibold mt-0.5"><span class="lang-en">A2 (Elementary)</span><span class="lang-tr hidden">A2 (Temel)</span></div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>

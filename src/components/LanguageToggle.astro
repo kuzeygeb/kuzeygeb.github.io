@@ -1,0 +1,83 @@
+---
+---
+<div class="lang-toggle-container inline-flex items-center rounded-xl bg-base-300/60 p-1 border border-base-300">
+  <button
+    class="btn-lang-en px-2.5 py-1 text-xs font-bold rounded-lg transition-all bg-primary text-white shadow-xs"
+    title="Switch to English (Default for ESC)"
+  >
+    🇬🇧 EN
+  </button>
+  <button
+    class="btn-lang-tr px-2.5 py-1 text-xs font-semibold rounded-lg transition-all text-base-content/70 hover:text-base-content"
+    title="Türkçe sürümüne geç"
+  >
+    🇹🇷 TR
+  </button>
+</div>
+
+<script is:inline>
+  (function() {
+    var ACTIVE_CLASS = "px-2.5 py-1 text-xs font-bold rounded-lg transition-all bg-primary text-white shadow-xs";
+    var INACTIVE_CLASS = "px-2.5 py-1 text-xs font-semibold rounded-lg transition-all text-base-content/70 hover:text-base-content";
+
+    // Apply saved language immediately to prevent flash of wrong language
+    var savedLang = localStorage.getItem('site_lang') || 'en';
+    document.documentElement.lang = savedLang;
+
+    function applyLanguage(lang) {
+      localStorage.setItem('site_lang', lang);
+      document.documentElement.lang = lang;
+
+      // Toggle visibility on ALL lang-en / lang-tr elements
+      var enEls = document.querySelectorAll('.lang-en');
+      var trEls = document.querySelectorAll('.lang-tr');
+
+      if (lang === 'tr') {
+        enEls.forEach(function(el) { el.classList.add('hidden'); });
+        trEls.forEach(function(el) { el.classList.remove('hidden'); });
+      } else {
+        trEls.forEach(function(el) { el.classList.add('hidden'); });
+        enEls.forEach(function(el) { el.classList.remove('hidden'); });
+      }
+
+      // Update ALL toggle button styles (both sidebar and mobile header instances)
+      document.querySelectorAll('.btn-lang-en').forEach(function(btn) {
+        btn.className = (lang === 'en') ? ('btn-lang-en ' + ACTIVE_CLASS) : ('btn-lang-en ' + INACTIVE_CLASS);
+      });
+      document.querySelectorAll('.btn-lang-tr').forEach(function(btn) {
+        btn.className = (lang === 'tr') ? ('btn-lang-tr ' + ACTIVE_CLASS) : ('btn-lang-tr ' + INACTIVE_CLASS);
+      });
+    }
+
+    function setupLanguageToggles() {
+      var currentLang = localStorage.getItem('site_lang') || 'en';
+
+      // Apply language state immediately
+      applyLanguage(currentLang);
+
+      // Attach click handlers to ALL EN buttons
+      document.querySelectorAll('.btn-lang-en').forEach(function(btn) {
+        var newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', function() { applyLanguage('en'); });
+      });
+
+      // Attach click handlers to ALL TR buttons
+      document.querySelectorAll('.btn-lang-tr').forEach(function(btn) {
+        var newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', function() { applyLanguage('tr'); });
+      });
+    }
+
+    // Run on initial page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupLanguageToggles);
+    } else {
+      setupLanguageToggles();
+    }
+
+    // Run after Astro View Transitions page swap
+    document.addEventListener('astro:page-load', setupLanguageToggles);
+  })();
+</script>

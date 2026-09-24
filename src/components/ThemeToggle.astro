@@ -1,0 +1,70 @@
+---
+---
+<button
+  class="theme-toggle-btn btn btn-sm btn-ghost border border-base-300 rounded-xl px-2.5 flex items-center gap-1.5 hover:bg-base-300/60 transition-all"
+  aria-label="Toggle Theme Mode"
+  title="Switch Light / Dark Theme"
+>
+  <span class="theme-sun-icon text-amber-500 font-bold text-sm">☀️</span>
+  <span class="theme-moon-icon text-blue-400 font-bold text-sm hidden">🌙</span>
+</button>
+
+<script is:inline>
+  (function() {
+    // Apply saved theme immediately to prevent flash
+    const saved = localStorage.getItem('site_theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+
+    function setupThemeToggles() {
+      // Update all icon states to match current theme
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'eu_theme';
+      const allSunIcons = document.querySelectorAll('.theme-sun-icon');
+      const allMoonIcons = document.querySelectorAll('.theme-moon-icon');
+
+      if (currentTheme === 'eu_dark') {
+        allSunIcons.forEach(el => el.classList.add('hidden'));
+        allMoonIcons.forEach(el => el.classList.remove('hidden'));
+      } else {
+        allMoonIcons.forEach(el => el.classList.add('hidden'));
+        allSunIcons.forEach(el => el.classList.remove('hidden'));
+      }
+
+      // Attach click handlers to ALL toggle buttons (sidebar + mobile header)
+      document.querySelectorAll('.theme-toggle-btn').forEach(function(btn) {
+        // Remove old listeners by cloning
+        var newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+
+        newBtn.addEventListener('click', function() {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'eu_dark' ? 'eu_theme' : 'eu_dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('site_theme', next);
+
+          // Update ALL icons across all instances
+          var suns = document.querySelectorAll('.theme-sun-icon');
+          var moons = document.querySelectorAll('.theme-moon-icon');
+          if (next === 'eu_dark') {
+            suns.forEach(function(s) { s.classList.add('hidden'); });
+            moons.forEach(function(m) { m.classList.remove('hidden'); });
+          } else {
+            moons.forEach(function(m) { m.classList.add('hidden'); });
+            suns.forEach(function(s) { s.classList.remove('hidden'); });
+          }
+        });
+      });
+    }
+
+    // Run on initial page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupThemeToggles);
+    } else {
+      setupThemeToggles();
+    }
+
+    // Run after Astro View Transitions page swap
+    document.addEventListener('astro:page-load', setupThemeToggles);
+  })();
+</script>

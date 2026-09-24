@@ -1,0 +1,478 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const mediaItems = [
+  // Diplomacy
+  {
+    title: "Estonian Ambassador H.E. Väino Reinart Reception (Video)",
+    title_tr: "Estonya Büyükelçisi Väino Reinart Resepsiyonu (Video)",
+    category: "diplomacy",
+    badge: "Diplomatic Translation",
+    type: "video",
+    src: "/estonya büyükelçisi Väino Reinart_ın çevirmenliğini yaptığımda.mp4",
+    poster: "/Estonya Büyükelçisi Väino Reinart resepsiyonunda.jpg",
+    desc: "Live consecutive translation and diplomatic liaison provided during official reception proceedings for Estonian Ambassador H.E. Väino Reinart.",
+    desc_tr: "Estonya Büyükelçisi Väino Reinart'ın resmi resepsiyonunda canlı ardıl çevirmenlik ve diplomatik eşlik."
+  },
+  {
+    title: "Official Reception with Estonian Ambassador",
+    title_tr: "Estonya Büyükelçisi ile Resmi Resepsiyon",
+    category: "diplomacy",
+    badge: "Diplomacy",
+    type: "image",
+    src: "/Estonya Büyükelçisi Väino Reinart resepsiyonunda.jpg",
+    desc: "High-level bilateral dialogue session with H.E. Väino Reinart, Ambassador of Estonia.",
+    desc_tr: "Estonya Büyükelçisi Väino Reinart ile üst düzey ikili diyalog oturumu."
+  },
+  {
+    title: "Diplomatic Field Dialogue & Institutional Liaison",
+    title_tr: "Diplomatik Saha Diyaloğu ve Kurumsal İrtibat",
+    category: "diplomacy",
+    badge: "Field Translation",
+    type: "image",
+    src: "/estonya büyükelçisi Väino Reinart_ın çevirmenliğini yaparken bir kare.jpg",
+    desc: "Consecutive translation and bilateral representation during diplomatic mission meetings.",
+    desc_tr: "Diplomatik misyon toplantılarında ardıl çevirmenlik ve ikili temsil."
+  },
+
+  // EU & Erasmus+
+  {
+    title: "Hearken the Youth - Strasbourg, France",
+    title_tr: "Hearken the Youth - Strasbourg, Fransa",
+    category: "erasmus",
+    badge: "Erasmus+ France",
+    type: "image",
+    src: "/Hearken the youth france.jpg",
+    desc: "International youth capacity building on social inclusion for deaf youth through sports in Strasbourg.",
+    desc_tr: "Strasbourg'da işitme engelli gençlerin spor yoluyla sosyal kapsayıcılığı üzerine uluslararası kapasite geliştirme."
+  },
+  {
+    title: "Strasbourg Inclusion Workshop - Group Presentation",
+    title_tr: "Strasbourg Kapsayıcılık Atölyesi - Grup Sunumu",
+    category: "erasmus",
+    badge: "Erasmus+ France",
+    type: "image",
+    src: "/Hearken the youth france(1).jpg",
+    desc: "Cross-border group presentations during European youth worker training in France.",
+    desc_tr: "Fransa'da Avrupa gençlik çalışanı eğitiminde sınır ötesi grup sunumları."
+  },
+  {
+    title: "Evaluation & Youthpass Ceremony - Strasbourg",
+    title_tr: "Değerlendirme ve Youthpass Töreni - Strasbourg",
+    category: "erasmus",
+    badge: "Strasbourg",
+    type: "image",
+    src: "/Hearken the youth france(2).jpg",
+    desc: "Closing session and Youthpass competency reflection at the end of the Strasbourg module.",
+    desc_tr: "Strasbourg modülünün sonunda kapanış oturumu ve Youthpass yetkinlik değerlendirmesi."
+  },
+  {
+    title: "Inclusive Resilience - Tirana, Albania",
+    title_tr: "Kapsayıcı Dayanıklılık - Tiran, Arnavutluk",
+    category: "erasmus",
+    badge: "Erasmus+ Albania",
+    type: "image",
+    src: "/Inclusive resillience albania.jpg",
+    desc: "Disaster resilience and sustainability workshop with young Paralympic athletes in Tirana.",
+    desc_tr: "Tiran'da genç Paralimpik sporcularla afet direnci ve sürdürülebilirlik atölyesi."
+  },
+  {
+    title: "Adaptive Sports & Climate Training - Tirana",
+    title_tr: "Adaptif Spor ve İklim Eğitimi - Tiran",
+    category: "erasmus",
+    badge: "Tirana",
+    type: "image",
+    src: "/Inclusive resillience albania(1).jpg",
+    desc: "Outdoor non-formal education session coordinated with the Turkish National Paralympic Committee.",
+    desc_tr: "Türkiye Milli Paralimpik Komitesi koordinasyonunda açık alan yaygın eğitim oturumu."
+  },
+  {
+    title: "International Youth Delegation Session",
+    title_tr: "Uluslararası Gençlik Delegasyon Oturumu",
+    category: "erasmus",
+    badge: "Erasmus+ KA220",
+    type: "image",
+    src: "/Inclusive resillience albania(2).jpg",
+    desc: "Co-designing non-formal learning toolkits with European NGO partners.",
+    desc_tr: "Avrupalı STK ortaklarıyla yaygın eğitim araç kitlerinin ortak tasarımı."
+  },
+  {
+    title: "Hearken the Youth Ankara Module",
+    title_tr: "Hearken the Youth Ankara Modülü",
+    category: "erasmus",
+    badge: "Erasmus+ Turkey",
+    type: "image",
+    src: "/Hearken the youth ankara.jpg",
+    desc: "Local training in Ankara for hearing-impaired youth introducing adaptive athletic activities.",
+    desc_tr: "Ankara'da işitme engelli gençlere yönelik adaptif spor aktiviteleri eğitimi."
+  },
+  {
+    title: "Hearing-Impaired Youth Workshop - Ankara",
+    title_tr: "İşitme Engelli Gençlik Atölyesi - Ankara",
+    category: "erasmus",
+    badge: "Ankara",
+    type: "image",
+    src: "/Hearken the youth ankara(1).jpg",
+    desc: "Interactive group activities promoting social inclusion and teamwork.",
+    desc_tr: "Sosyal kapsayıcılık ve takım çalışmasını destekleyen interaktif grup aktiviteleri."
+  },
+  {
+    title: "European Parliament Observer Visit - Strasbourg",
+    title_tr: "Avrupa Parlamentosu Gözlemci Ziyareti - Strasbourg",
+    category: "erasmus",
+    badge: "EU Parliament",
+    type: "image",
+    src: "/avrupa parlementosu ziyareti.jpg",
+    desc: "Study visit to the European Parliament in Strasbourg examining EU legislative procedures.",
+    desc_tr: "AB yasama süreçlerini inceleyen Avrupa Parlamentosu çalışma ziyareti."
+  },
+  {
+    title: "European Parliament Plenary Chamber",
+    title_tr: "Avrupa Parlamentosu Genel Kurul Salonu",
+    category: "erasmus",
+    badge: "Strasbourg",
+    type: "image",
+    src: "/avrupa parlementosu ziyareti(1).jpg",
+    desc: "Observer session focused on EU youth advocacy and cross-border democratic participation.",
+    desc_tr: "AB gençlik savunuculuğu ve sınır ötesi demokratik katılım odaklı gözlemci oturumu."
+  },
+
+  // Sustainability
+  {
+    title: "Circular Economy & Zero Waste Training",
+    title_tr: "Döngüsel Ekonomi ve Sıfır Atık Eğitimi",
+    category: "sustainability",
+    badge: "Let's Do It!",
+    type: "image",
+    src: "/Döngüsel ekonomi.jpg",
+    desc: "Non-formal education module on circular economy models for university students and volunteers.",
+    desc_tr: "Üniversite öğrencileri ve gönüllüler için döngüsel ekonomi modelleri üzerine yaygın eğitim."
+  },
+  {
+    title: "Circular Economy Interactive Workshop",
+    title_tr: "Döngüsel Ekonomi İnteraktif Atölyesi",
+    category: "sustainability",
+    badge: "Workshop",
+    type: "image",
+    src: "/Döngüsel Ekonomi(1).jpg",
+    desc: "Group brainstorming on responsible consumption and resource management.",
+    desc_tr: "Sorumlu tüketim ve kaynak yönetimi üzerine grup beyin fırtınası."
+  },
+  {
+    title: "World Cleanup Day Field Mobilization",
+    title_tr: "Dünya Temizlik Günü Saha Mobilizasyonu",
+    category: "sustainability",
+    badge: "World Cleanup Day",
+    type: "image",
+    src: "/Dünya Temizlik gününden bir kare_.jpg",
+    desc: "Mobilizing volunteer teams for civic cleanup and waste audit data collection.",
+    desc_tr: "Sivil temizlik ve atık denetim verisi toplama için gönüllü ekiplerin mobilize edilmesi."
+  },
+  {
+    title: "Project Cycle Management (PCM) Facilitation",
+    title_tr: "Proje Döngüsü Yönetimi (PCM) Kolaylaştırıcılığı",
+    category: "sustainability",
+    badge: "PCM Trainer",
+    type: "image",
+    src: "/Proje Döngüsü Yönetimi eğitimi verirken 1_.jpg",
+    desc: "Instructing volunteer coordinators in Logical Framework and Problem Tree analysis.",
+    desc_tr: "Gönüllü koordinatörlere Mantıksal Çerçeve ve Problem Ağacı analizi eğitimi."
+  },
+
+  // Outreach
+  {
+    title: "High School Environmental Literacy Training",
+    title_tr: "Lise Öğrencilerine Çevre Okuryazarlığı Eğitimi",
+    category: "outreach",
+    badge: "High School",
+    type: "image",
+    src: "/Liseli öğrencilere yönelik çevre eğitimi verirken 1.jpg",
+    desc: "Interactive workshops for high school students on climate change and carbon footprint awareness.",
+    desc_tr: "İklim değişikliği ve karbon ayak izi farkındalığı üzerine interaktif lise atölyeleri."
+  },
+  {
+    title: "Primary School Ecological Engagement",
+    title_tr: "İlkokul Ekolojik Farkındalık Etkinliği",
+    category: "outreach",
+    badge: "Primary Education",
+    type: "image",
+    src: "/İlkokul öğrencilerine yönelik çevre eğitimi verirken 1.jpg",
+    desc: "Game-based ecological activities designed for elementary school students.",
+    desc_tr: "İlkokul öğrencileri için tasarlanmış oyun tabanlı ekoloji aktiviteleri."
+  },
+  {
+    title: "Online Volunteer & Trainer Webinar",
+    title_tr: "Çevrimiçi Gönüllü ve Eğitmen Webinarı",
+    category: "outreach",
+    badge: "Webinar",
+    type: "image",
+    src: "/Çevrim içi bir eğitim verirken bir kare_.jpg",
+    desc: "Nationwide online webinar guiding volunteer network leaders in digital leadership.",
+    desc_tr: "Gönüllü ağ liderlerine dijital liderlik konusunda ulusal çevrimiçi webinar."
+  },
+  {
+    title: "Professional Field Photography I",
+    title_tr: "Profesyonel Saha Fotoğrafçılığı I",
+    category: "outreach",
+    badge: "Field Documentation",
+    type: "image",
+    src: "/DSC03741.JPG",
+    desc: "High-resolution field documentation from youth work and environmental education activities.",
+    desc_tr: "Gençlik çalışmaları ve çevre eğitimi faaliyetlerinden yüksek çözünürlüklü saha belgeleri."
+  },
+  {
+    title: "Professional Field Photography II",
+    title_tr: "Profesyonel Saha Fotoğrafçılığı II",
+    category: "outreach",
+    badge: "Field Documentation",
+    type: "image",
+    src: "/DSC04130.JPG",
+    desc: "Professional documentary photography capturing training and community engagement moments.",
+    desc_tr: "Eğitim ve topluluk katılımı anlarını yakalayan profesyonel belgesel fotoğrafçılık."
+  }
+];
+---
+
+<BaseLayout title="Media & Gallery | Kuzey Çağan Gebrecioğlu" sideBarActiveItemID="gallery">
+  <!-- Page Header -->
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mb-3 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span class="lang-en">40+ Field Photos · Video Recording · International Project Records</span>
+      <span class="lang-tr hidden">40+ Saha Görseli · Video Kayıtları · Uluslararası Proje Belgeleri</span>
+    </div>
+    <h1 class="text-3xl font-extrabold tracking-tight text-base-content">
+      <span class="lang-en">Field Media & Project Gallery</span>
+      <span class="lang-tr hidden">Saha Görselleri & Medya Galerisi</span>
+    </h1>
+    <p class="text-sm text-base-content/75 mt-1">
+      <span class="lang-en">Visual documentation from Erasmus+ projects, diplomatic translation missions, Let's Do It! workshops, and European Parliament visits</span>
+      <span class="lang-tr hidden">Erasmus+ projeleri, diplomatik çevirmenlikler, Let's Do It! Türkiye atölyeleri ve Avrupa Parlamentosu ziyaretleri</span>
+    </p>
+  </div>
+
+  <!-- Featured Video Section -->
+  <div class="card bg-gradient-to-br from-primary/10 via-base-200 to-base-300 border-2 border-primary/40 rounded-2xl overflow-hidden shadow-lg mb-10">
+    <div class="p-6">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="badge badge-primary font-bold">
+          <span class="lang-en">Featured Video</span>
+          <span class="lang-tr hidden">Öne Çıkan Video Kaydı</span>
+        </span>
+        <span class="text-xs text-base-content/70 font-semibold">
+          <span class="lang-en">Diplomatic Translation</span>
+          <span class="lang-tr hidden">Diplomatik Çevirmenlik</span>
+        </span>
+      </div>
+      <h2 class="text-2xl font-bold text-base-content mb-2">
+        <span class="lang-en">Diplomatic Consecutive Translation for Estonian Ambassador H.E. Väino Reinart</span>
+        <span class="lang-tr hidden">Estonya Büyükelçisi H.E. Väino Reinart Resepsiyon Çevirmenliği</span>
+      </h2>
+      <p class="text-sm text-base-content/85 leading-relaxed mb-5 max-w-3xl lang-en">
+        Live video recording of consecutive translation and diplomatic liaison support provided during the official reception proceedings for H.E. Väino Reinart, Ambassador of the Republic of Estonia to Turkey.
+      </p>
+      <p class="text-sm text-base-content/85 leading-relaxed mb-5 max-w-3xl lang-tr hidden">
+        Estonya Cumhuriyeti Türkiye Büyükelçisi Väino Reinart'ın katıldığı resmi resepsiyon toplantısında gerçekleştirilen canlı ardıl çevirmenlik ve diplomatik eşlik görevine ait video kaydı.
+      </p>
+
+      <div class="w-full max-w-3xl mx-auto rounded-xl overflow-hidden border border-base-300 shadow-md bg-black">
+        <video 
+          controls 
+          preload="metadata"
+          poster={encodeURI("/Estonya Büyükelçisi Väino Reinart resepsiyonunda.jpg")}
+          class="w-full max-h-[450px] object-contain"
+        >
+          <source src={encodeURI("/estonya büyükelçisi Väino Reinart_ın çevirmenliğini yaptığımda.mp4")} type="video/mp4" />
+          Browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="flex flex-wrap gap-2 mb-8" id="filter-buttons">
+    <button data-filter="all" class="filter-btn btn btn-sm btn-primary rounded-xl" aria-pressed="true">
+      <span class="lang-en">All Media</span>
+      <span class="lang-tr hidden">Tüm Medyalar</span>
+    </button>
+    <button data-filter="erasmus" class="filter-btn btn btn-sm btn-outline rounded-xl" aria-pressed="false">🇪🇺 EU & Erasmus+</button>
+    <button data-filter="diplomacy" class="filter-btn btn btn-sm btn-outline rounded-xl" aria-pressed="false">🏛️ Diplomacy</button>
+    <button data-filter="sustainability" class="filter-btn btn btn-sm btn-outline rounded-xl" aria-pressed="false">🌱 Sustainability</button>
+    <button data-filter="outreach" class="filter-btn btn btn-sm btn-outline rounded-xl" aria-pressed="false">🎓 Workshops</button>
+  </div>
+
+  <!-- Media Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="gallery-grid">
+    {mediaItems.map((item) => (
+      <div 
+        class="gallery-card card bg-base-200/60 hover:bg-base-200 border border-base-300 hover:border-primary/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-sm hover:shadow-md group cursor-pointer"
+        data-category={item.category}
+        data-src={item.src}
+        data-title={item.title}
+        data-desc={item.desc}
+        data-title-tr={item.title_tr}
+        data-desc-tr={item.desc_tr}
+        data-type={item.type}
+      >
+        <figure class="relative h-48 overflow-hidden bg-base-300">
+          <img 
+            src={encodeURI(item.type === 'video' ? (item.poster || item.src) : item.src)} 
+            alt={item.title}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+          <div class="absolute top-3 left-3">
+            <span class="badge badge-primary badge-sm font-semibold shadow-sm">{item.badge}</span>
+          </div>
+          {item.type === 'video' && (
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-primary/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                ▶
+              </div>
+            </div>
+          )}
+        </figure>
+        <div class="p-4">
+          <h3 class="font-bold text-base text-base-content group-hover:text-primary transition-colors line-clamp-1 mb-1">
+            <span class="lang-en">{item.title}</span>
+            <span class="lang-tr hidden">{item.title_tr || item.title}</span>
+          </h3>
+          <p class="text-xs text-base-content/75 line-clamp-2 leading-relaxed">
+            <span class="lang-en">{item.desc}</span>
+            <span class="lang-tr hidden">{item.desc_tr || item.desc}</span>
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Lightbox Modal -->
+  <dialog id="media_modal" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box max-w-4xl bg-base-100 border border-base-300 rounded-2xl p-6">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3">✕</button>
+      </form>
+      <div id="modal-content" class="mt-2">
+        <div id="modal-media-container" class="w-full max-h-[65vh] flex items-center justify-center rounded-xl overflow-hidden bg-black mb-4">
+        </div>
+        <h3 id="modal-title" class="font-bold text-xl text-base-content mb-2"></h3>
+        <p id="modal-desc" class="text-sm text-base-content/85 leading-relaxed"></p>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+
+  <!-- Interactive Filtering Script -->
+  <script>
+    function initGallery() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.gallery-card');
+      const modal = document.getElementById('media_modal') as HTMLDialogElement;
+      const modalContainer = document.getElementById('modal-media-container');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          
+          filterBtns.forEach(b => {
+            b.classList.remove('btn-primary');
+            b.classList.add('btn-outline');
+          });
+          btn.classList.remove('btn-outline');
+          btn.classList.add('btn-primary');
+          filterBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+          btn.setAttribute('aria-pressed', 'true');
+
+          cards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              (card as HTMLElement).style.display = 'flex';
+            } else {
+              (card as HTMLElement).style.display = 'none';
+            }
+          });
+        });
+      });
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const src = card.getAttribute('data-src');
+          const title = card.getAttribute('data-title');
+          const desc = card.getAttribute('data-desc');
+          const type = card.getAttribute('data-type');
+
+          const title_tr = card.getAttribute('data-title-tr');
+          const desc_tr = card.getAttribute('data-desc-tr');
+          if (modalTitle) modalTitle.innerHTML = `<span class="lang-en">${title || ''}</span><span class="lang-tr hidden">${title_tr || title || ''}</span>`;
+          if (modalDesc) modalDesc.innerHTML = `<span class="lang-en">${desc || ''}</span><span class="lang-tr hidden">${desc_tr || desc || ''}</span>`;
+
+          const currentLang = localStorage.getItem('site_lang') || 'en';
+          if (currentLang === 'tr') {
+            modalTitle?.querySelectorAll('.lang-en').forEach(el => el.classList.add('hidden'));
+            modalTitle?.querySelectorAll('.lang-tr').forEach(el => el.classList.remove('hidden'));
+            modalDesc?.querySelectorAll('.lang-en').forEach(el => el.classList.add('hidden'));
+            modalDesc?.querySelectorAll('.lang-tr').forEach(el => el.classList.remove('hidden'));
+          } else {
+            modalTitle?.querySelectorAll('.lang-tr').forEach(el => el.classList.add('hidden'));
+            modalTitle?.querySelectorAll('.lang-en').forEach(el => el.classList.remove('hidden'));
+            modalDesc?.querySelectorAll('.lang-tr').forEach(el => el.classList.add('hidden'));
+            modalDesc?.querySelectorAll('.lang-en').forEach(el => el.classList.remove('hidden'));
+          }
+
+          if (modalContainer) {
+            if (type === 'video') {
+              modalContainer.innerHTML = `<video controls autoplay class="w-full max-h-[60vh] object-contain"><source src="${src}" type="video/mp4" /></video>`;
+            } else {
+              modalContainer.innerHTML = `<img src="${src}" alt="${title}" class="w-full max-h-[60vh] object-contain" />`;
+            }
+          }
+
+          if (modal) modal.showModal();
+          modal.setAttribute('data-current-src', src);
+        });
+      });
+
+      // Keyboard navigation for lightbox
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('media_modal') as HTMLDialogElement;
+        if (!modal || !modal.open) return;
+        
+        const visibleCards = Array.from(document.querySelectorAll('.gallery-card')).filter(
+          card => (card as HTMLElement).style.display !== 'none'
+        );
+        
+        if (visibleCards.length === 0) return;
+        
+        const currentSrc = modal.getAttribute('data-current-src');
+        const currentIndex = visibleCards.findIndex(
+          card => card.getAttribute('data-src') === currentSrc
+        );
+        
+        let nextIndex = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          nextIndex = (currentIndex + 1) % visibleCards.length;
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          nextIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
+        }
+        
+        if (nextIndex >= 0) {
+          const nextCard = visibleCards[nextIndex] as HTMLElement;
+          nextCard.click();
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGallery);
+    } else {
+      initGallery();
+    }
+    document.addEventListener('astro:page-load', initGallery);
+  </script>
+</BaseLayout>

@@ -10,7 +10,7 @@ export interface Props {
 	ogType?: string;
 }
 
-const { title, description, image = '/social_img.webp', ogType = 'website' } = Astro.props;
+const { title, description, image = '/social_img.png', ogType = 'website' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -23,6 +23,7 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<link rel="canonical" href={Astro.url} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
@@ -37,3 +38,20 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kuzey Çağan Gebrecioğlu",
+  "url": "https://kuzeygeb.github.io",
+  "jobTitle": "International Relations Strategist & Youth Worker",
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Aydın Adnan Menderes University" },
+    { "@type": "CollegeOrUniversity", "name": "Anadolu University" }
+  ],
+  "sameAs": [
+    "https://github.com/kuzeygeb",
+    "https://www.linkedin.com/in/kuzey-%C3%A7a%C4%9Fan-gebrecio%C4%9Flu-607550235"
+  ]
+})} />

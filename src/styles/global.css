@@ -1,3 +1,53 @@
+/* Timeline last-child line removal */
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
+}
+
+/* Focus ring styling for accessibility */
+:focus-visible {
+    outline: 2px solid hsl(var(--p));
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Smooth page transitions */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Gallery card entrance animation */
+.gallery-card {
+    animation: fadeInUp 0.4s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger gallery card animations */
+.gallery-card:nth-child(1) { animation-delay: 0.02s; }
+.gallery-card:nth-child(2) { animation-delay: 0.06s; }
+.gallery-card:nth-child(3) { animation-delay: 0.10s; }
+.gallery-card:nth-child(4) { animation-delay: 0.14s; }
+.gallery-card:nth-child(5) { animation-delay: 0.18s; }
+.gallery-card:nth-child(6) { animation-delay: 0.22s; }
+.gallery-card:nth-child(7) { animation-delay: 0.26s; }
+.gallery-card:nth-child(8) { animation-delay: 0.30s; }
+.gallery-card:nth-child(9) { animation-delay: 0.34s; }
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .gallery-card {
+        animation: none;
+    }
+    html {
+        scroll-behavior: auto;
+    }
 }

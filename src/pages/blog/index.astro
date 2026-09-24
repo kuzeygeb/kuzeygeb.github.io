@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Blog & Analyses | Kuzey Çağan Gebrecioğlu" sideBarActiveItemID="blog">
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mb-3 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+      <span class="lang-en">Foreign Policy · EU Youth Strategy · Sustainability · Security Studies</span>
+      <span class="lang-tr hidden">Dış Politika · AB Gençlik Stratejileri · Sürdürülebilirlik · Güvenlik</span>
+    </div>
+    <h1 class="text-3xl font-extrabold tracking-tight text-base-content">
+      <span class="lang-en">Blog & Academic Analyses</span>
+      <span class="lang-tr hidden">Blog & Akademik Analizler</span>
+    </h1>
+    <p class="text-sm text-base-content/75 mt-1">
+      <span class="lang-en">Articles on International Relations, European Union youth work, computational policy modeling, and environmental diplomacy</span>
+      <span class="lang-tr hidden">Uluslararası ilişkiler, Avrupa Birliği projeleri, hesaplamalı dış politika ve çevre diplomasisi üzerine yazılar</span>
+    </p>
+  </div>
+
+  <div class="grid gap-6">
+    {posts.map((post) => (
+      <div class="card bg-base-200/50 hover:bg-base-200/80 border border-base-300 hover:border-primary/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-sm hover:shadow-md">
+        <div class="hero-content flex-col md:flex-row p-5 gap-6 items-start">
+          {post.data.heroImage && (
+            <div class="w-full md:w-4/12 max-w-[260px] h-40 rounded-xl overflow-hidden bg-base-300 border border-base-300 shadow-sm shrink-0">
+              <img
+                src={post.data.heroImage}
+                alt={post.data.title}
+                class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='/post_img.webp';"
+              />
+            </div>
+          )}
+          <div class="w-full md:w-8/12 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2 flex-wrap">
+                {post.data.badge && (
+                  <span class="badge badge-primary badge-sm font-semibold">
+                    <span class="lang-en">{post.data.badge}</span>
+                    <span class="lang-tr hidden">{post.data.badge_tr || post.data.badge}</span>
+                  </span>
+                )}
+                <span class="text-xs text-base-content/60 font-medium">
+                  <span class="lang-en">{post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</span>
+                  <span class="lang-tr hidden">{post.data.pubDate.toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" })}</span>
+                </span>
+                <span class="text-xs text-base-content/40">•</span>
+                <span class="text-xs text-base-content/60">
+                  <span class="lang-en">{post.data.readTime || "5 min read"}</span>
+                  <span class="lang-tr hidden">{post.data.readTime_tr || post.data.readTime || "5 dk okuma"}</span>
+                </span>
+              </div>
+              
+              <h2 class="text-xl font-bold text-base-content hover:text-primary transition-colors mb-2">
+                <a href={`/blog/${post.slug}/`}>
+                  <span class="lang-en">{post.data.title}</span>
+                  <span class="lang-tr hidden">{post.data.title_tr || post.data.title}</span>
+                </a>
+              </h2>
+
+              <p class="text-sm text-base-content/80 leading-relaxed mb-4 line-clamp-2">
+                <span class="lang-en">{post.data.description}</span>
+                <span class="lang-tr hidden">{post.data.description_tr || post.data.description}</span>
+              </p>
+
+              {post.data.tags && (
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  {post.data.tags.map((tag) => (
+                    <span class="badge badge-outline text-xs opacity-75">#{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div>
+              <a
+                href={`/blog/${post.slug}/`}
+                class="btn btn-primary btn-sm rounded-lg shadow-sm font-medium"
+              >
+                <span class="lang-en">Read Article ↗</span>
+                <span class="lang-tr hidden">Makaleyi Oku ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</BaseLayout>

@@ -3,49 +3,211 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 ---
 
-<BaseLayout title = "Projects" sideBarActiveItemID="projects">
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Projects Header</div>
+<BaseLayout title="Projects & Fieldwork | Kuzey Çağan Gebrecioğlu" sideBarActiveItemID="projects">
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mb-3 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+      <span class="lang-en">EU Erasmus+ KA220 · Field Delivery · Diplomacy · TÜBİTAK Grant</span>
+      <span class="lang-tr hidden">AB Erasmus+ KA220 · Saha Uygulamaları · Diplomasi · TÜBİTAK</span>
+    </div>
+    <h1 class="text-3xl font-extrabold tracking-tight text-base-content">
+      <span class="lang-en">Projects, Research & Fieldwork</span>
+      <span class="lang-tr hidden">Projeler, Araştırmalar & Saha Çalışmaları</span>
+    </h1>
+    <p class="text-sm text-base-content/75 mt-1">
+      <span class="lang-en">Transnational youth mobilities, digital policy tools, environmental campaigns, and funded research</span>
+      <span class="lang-tr hidden">Uluslararası gençlik mobiliteleri, dijital politika simülasyonları, çevre kampanyaları ve fonlanan araştırmalar</span>
+    </p>
+  </div>
+
+  <!-- 1. Featured Digital Tool: Axis -->
+  <div class="mb-4">
+    <span class="text-xs font-bold uppercase tracking-wider text-primary">
+      <span class="lang-en">Interactive Digital Solutions</span>
+      <span class="lang-tr hidden">İnteraktif Dijital Çözümler</span>
+    </span>
+  </div>
+
+  <div class="card bg-base-200/50 border-2 border-primary/30 hover:border-primary transition-all duration-300 rounded-2xl overflow-hidden shadow-sm mb-8">
+    <div class="hero-content flex-col md:flex-row p-6 gap-6 items-start">
+      <div class="w-full md:w-5/12 max-w-[280px] rounded-xl overflow-hidden border border-base-300 shadow-sm bg-base-300 shrink-0">
+        <img 
+          src="/post_img.webp" 
+          alt="Axis Geopolitical Analysis Tool" 
+          class="w-full h-44 object-cover object-top hover:scale-105 transition duration-300"
+        />
+      </div>
+      <div class="w-full md:w-7/12 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+            <h2 class="text-xl font-bold text-base-content">Axis: Computational Foreign Policy Platform</h2>
+            <span class="badge badge-primary badge-sm font-semibold">
+              <span class="lang-en">Live Web App</span>
+              <span class="lang-tr hidden">Canlı Web Uygulaması</span>
+            </span>
+          </div>
+          <p class="text-sm text-base-content/85 leading-relaxed mb-4 lang-en">
+            An open-source quantitative platform modeling foreign policy decision trees, deterrence matrices, and crisis escalation vectors using Python and decision theory logic.
+          </p>
+          <p class="text-sm text-base-content/85 leading-relaxed mb-4 lang-tr hidden">
+            Uluslararası kriz tırmanma vektörlerini, caydırıcılık matrislerini ve aktör etkileşimlerini nicel oyun teorisi ve karar ağaçları ile simüle eden açık kaynaklı web uygulaması.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="badge badge-outline text-xs">Foreign Policy</span>
+            <span class="badge badge-outline text-xs">Decision Theory</span>
+            <span class="badge badge-outline text-xs">Python / Web</span>
+            <span class="badge badge-outline text-xs">Quantitative IR</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <a 
+            href="https://kuzeygeb.github.io/axis/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-primary btn-sm rounded-lg shadow-sm"
+          >
+            <span class="lang-en">Launch Live Platform ↗</span>
+            <span class="lang-tr hidden">Canlı Platformu Aç ↗</span>
+          </a>
+          <a 
+            href="https://github.com/kuzeygeb" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-ghost btn-sm rounded-lg border border-base-300"
+          >
+            <span class="lang-en">GitHub Repository</span>
+            <span class="lang-tr hidden">GitHub Deposu</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. European Union & Erasmus+ Projects -->
+  <div class="mb-4 mt-8">
+    <span class="text-xs font-bold uppercase tracking-wider text-primary">
+      <span class="lang-en">Erasmus+ KA220-YOU European Initiatives</span>
+      <span class="lang-tr hidden">Avrupa Birliği & Erasmus+ KA220-YOU İnisiyatifleri</span>
+    </span>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
+    title="Inclusive Resilience Project: Paralympic Youth & Climate Adaptation (Tirana, Albania)"
+    img="/Inclusive resillience albania.jpg"
+    desc="Facilitated European non-formal capacity building modules in Tirana for young Paralympic athletes on disaster resilience and ecological sustainability under Erasmus+ KA220-YOU."
+    url="/gallery"
+    badge="Erasmus+ Albania"
+    tags={["Erasmus+ KA220", "Paralympic Sports", "Disability Inclusion", "Resilience"]}
   />
-  <div class="divider my-0"></div>
+  <div class="divider my-0 opacity-40"></div>
+
   <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    title="Hearken the Youth Project: Fostering Deaf Youth Inclusion (Strasbourg, France)"
+    img="/Hearken the youth france.jpg"
+    desc="Cross-border youth capacity building in Strasbourg, France. Designed accessible sports and environmental toolkits tailored for deaf youth and European youth workers."
+    url="/gallery"
+    badge="Erasmus+ France"
+    tags={["Erasmus+ KA220", "Deaf Youth", "Strasbourg", "Social Inclusion"]}
+  />
+  <div class="divider my-0 opacity-40"></div>
+
+  <HorizontalCard
+    title="Hearken the Youth Project: Adapted Sports & Sustainability (Ankara, Turkey)"
+    img="/Hearken the youth ankara.jpg"
+    desc="Delivered localized training sessions in Ankara for hearing-impaired youth and volunteer leaders, introducing SDGs and adaptive athletic training methodologies."
+    url="/gallery"
+    badge="Erasmus+ Turkey"
+    tags={["Youth Empowerment", "Capacity Building", "Ankara", "SDGs"]}
+  />
+  <div class="divider my-0 opacity-40"></div>
+
+  <HorizontalCard
+    title="European Parliament Educational Observer Visit & Delegation (Strasbourg)"
+    img="/avrupa parlementosu ziyareti.jpg"
+    desc="Participated in observer sessions at the European Parliament in Strasbourg, examining EU legislative procedures, youth advocacy, and cross-border democratic participation."
+    url="/gallery"
+    badge="Strasbourg Study Visit"
+    tags={["European Parliament", "EU Governance", "Strasbourg", "Public Policy"]}
   />
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Projects Header</div>
+  <!-- 3. Diplomatic & High-Level Representation -->
+  <div class="mb-4 mt-10">
+    <span class="text-xs font-bold uppercase tracking-wider text-primary">
+      <span class="lang-en">Diplomatic Engagement & Liaison Support</span>
+      <span class="lang-tr hidden">Diplomatik Görevler & Üst Düzey Temsil</span>
+    </span>
   </div>
 
   <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
+    title="Diplomatic Consecutive Translation for Estonian Ambassador Väino Reinart"
+    img="/Estonya Büyükelçisi Väino Reinart resepsiyonunda.jpg"
+    desc="Provided high-level consecutive translation and diplomatic liaison support during official reception meetings with H.E. Väino Reinart, Ambassador of Estonia to Turkey."
+    url="/gallery"
+    badge="Diplomatic Liaison"
+    tags={["Diplomacy", "Consecutive Translation", "Bilateral Affairs", "Estonia"]}
   />
-  <div class="divider my-0"></div>
+  <div class="divider my-0 opacity-40"></div>
+
   <HorizontalCard
-    title="Demo Project 4"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    title="Diplomatic Field Dialogue & Institutional Liaison (Estonian Embassy)"
+    img="/estonya büyükelçisi Väino Reinart_ın çevirmenliğini yaparken bir kare.jpg"
+    desc="Active field consecutive translation and coordination during diplomatic representation meetings with Estonian Ambassador Väino Reinart."
+    url="/gallery"
+    badge="Field Interpreting"
+    tags={["Diplomatic Mission", "Consecutive Translation", "International Relations"]}
   />
-  <div class="divider my-0"></div>
+
+  <!-- 4. Let's Do It! Türkiye & Environmental Education -->
+  <div class="mb-4 mt-10">
+    <span class="text-xs font-bold uppercase tracking-wider text-primary">
+      <span class="lang-en">Sustainability, Circular Economy & Civic Action</span>
+      <span class="lang-tr hidden">Sürdürülebilirlik, Döngüsel Ekonomi & Sivil Eylem</span>
+    </span>
+  </div>
+
   <HorizontalCard
-    title="Demo Project 5"
+    title="Circularity & Zero-Waste Youth Training Modules (Let's Do It! Türkiye)"
+    img="/Döngüsel ekonomi.jpg"
+    desc="Curated and implemented 60+ interactive non-formal education sessions reaching 2,500+ young individuals across Turkey aligned with UN SDG 12 and SDG 13."
+    url="/gallery"
+    badge="Sustainability & SDGs"
+    tags={["Circular Economy", "Non-Formal Learning", "Youth Work", "Let's Do It!"]}
+  />
+  <div class="divider my-0 opacity-40"></div>
+
+  <HorizontalCard
+    title="World Cleanup Day National Mobilization & Waste Audit"
+    img="/Dünya Temizlik gününden bir kare_.jpg"
+    desc="Led volunteer mobilization and civic waste mapping initiatives as part of World Cleanup Day, engaging youth cohorts and municipal partners in high-impact cleanup actions."
+    url="/gallery"
+    badge="World Cleanup Day"
+    tags={["Civic Action", "Waste Audit", "Community Volunteering"]}
+  />
+  <div class="divider my-0 opacity-40"></div>
+
+  <HorizontalCard
+    title="Project Cycle Management (PCM) Workshop Facilitation"
+    img="/Proje Döngüsü Yönetimi eğitimi verirken 1_.jpg"
+    desc="Conducted Project Cycle Management workshops instructing volunteer coordinators in logical frameworks, KPI tracking, and resource development."
+    url="/gallery"
+    badge="PCM Training"
+    tags={["Project Management", "Logical Framework", "Capacity Building"]}
+  />
+
+  <!-- 5. Research Grants & Academic Writing -->
+  <div class="mb-4 mt-10">
+    <span class="text-xs font-bold uppercase tracking-wider text-primary">
+      <span class="lang-en">Funded Research & Publications</span>
+      <span class="lang-tr hidden">Fonlanan Araştırmalar & Akademik Çalışmalar</span>
+    </span>
+  </div>
+
+  <HorizontalCard
+    title="TÜBİTAK 2209-A: Turkish-Type Deterrence Model (TTCM) in Conflict Management"
     img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+    desc="National research project examining the structural dynamics of the Turkish-Type Deterrence Model as an instrument of conflict de-escalation in Cyprus and the Middle East."
+    url="/blog/tubitak-deterrence-model"
+    badge="TÜBİTAK 2209-A Grant"
+    tags={["Security Studies", "Conflict Resolution", "Deterrence Theory", "TÜBİTAK"]}
   />
 </BaseLayout>

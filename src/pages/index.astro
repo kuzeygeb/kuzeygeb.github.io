@@ -1,78 +1,174 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
-
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
-    <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+  <!-- Hero Section -->
+  <div class="pb-8 mt-2">
+    <!-- Status Badge -->
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mb-4 shadow-sm">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span class="lang-en">🇪🇺 European Solidarity Corps (ESC) Candidate & Youth Worker</span>
+      <span class="lang-tr hidden">🇪🇺 Avrupa Dayanışma Programı (ESC) Adayı & Gençlik Çalışanı</span>
     </div>
-    <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
+    
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-base-content leading-tight">
+      <span class="lang-en">Hi, I'm <span class="text-primary">Kuzey Çağan</span> 👋</span>
+      <span class="lang-tr hidden">Merhaba, Ben <span class="text-primary">Kuzey Çağan</span> 👋</span>
+    </h1>
+    
+    <h2 class="text-lg sm:text-xl font-semibold text-base-content/80 mt-2">
+      <span class="lang-en">International Relations Strategist, Non-Formal Educator & Climate Policy Director</span>
+      <span class="lang-tr hidden">Uluslararası İlişkiler Stratejisti, Yaygın Eğitim Eğitmeni & İklim Politikaları Direktörü</span>
+    </h2>
+    
+    <!-- Human-crafted bio -->
+    <div class="py-4">
+      <p class="text-base text-base-content/85 leading-relaxed max-w-3xl lang-en">
+        Dedicated youth worker and policy researcher specializing in European youth mobility, disability inclusion, circular economy, and quantitative foreign policy analysis. Currently serving as Director of Strategic Partnerships at Let's Do It! Türkiye and lead organizer for LCOY 2026. Experienced non-formal education trainer having facilitated over 60 workshops for 2,500+ young people, with hands-on Erasmus+ KA220-YOU project delivery in France, Albania, and Turkey. Actively seeking ESC volunteering opportunities across European host organizations.
+      </p>
+      <p class="text-base text-base-content/85 leading-relaxed max-w-3xl lang-tr hidden">
+        Avrupa gençlik mobiliteleri, engelli gençlerin toplumsal kapsayıcılığı, döngüsel ekonomi ve nicel dış politika analizi alanlarında uzmanlaşmış gençlik çalışanı ve politika araştırmacısıyım. Let's Do It! Türkiye Stratejik Ortaklıklar Direktörü ve LCOY 2026 Organizatörüyüm. 60'tan fazla atölyede 2.500'ü aşkın gence ulaşan yaygın eğitim kolaylaştırıcısı ve Erasmus+ projesi eğitmeni olarak, Avrupa'daki ev sahibi kuruluşlarda ESC gönüllülük fırsatları aramaktayım.
+      </p>
+    </div>
+
+    <!-- Call to Actions -->
+    <div class="flex flex-wrap gap-3 mt-1">
+      <a class="btn btn-primary rounded-xl px-5 shadow-md flex items-center gap-2" href="/cv">
+        <span>📄</span>
+        <span class="lang-en">Explore CV & ESC Credentials</span>
+        <span class="lang-tr hidden">Özgeçmiş & ESC Nitelikleri</span>
+      </a>
+      <a class="btn btn-outline rounded-xl px-5 flex items-center gap-2 border-base-300 hover:border-primary" href="/gallery">
+        <span>📸</span>
+        <span class="lang-en">Field Media & Video (40+)</span>
+        <span class="lang-tr hidden">Saha Medyası & Video (40+)</span>
+      </a>
+      <a class="btn btn-outline rounded-xl px-5 flex items-center gap-2 border-base-300" href="/projects">
+        <span>🇪🇺</span>
+        <span class="lang-en">Projects & Research</span>
+        <span class="lang-tr hidden">Projeler & Araştırma</span>
+      </a>
+      <a class="btn btn-ghost border border-base-300 rounded-xl px-5" href="/blog">
+        <span>✍️</span>
+        <span class="lang-en">Blog</span>
+        <span class="lang-tr hidden">Blog</span>
       </a>
     </div>
   </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+  <!-- Key Metrics Row (ESC Focused, 3 Ülke Removed) -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 mb-10">
+    <div class="p-4.5 rounded-2xl bg-gradient-to-br from-primary/5 to-base-200 border border-primary/20 text-center shadow-sm">
+      <div class="text-3xl font-black text-primary">2,500+</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-1">
+        <span class="lang-en">Youth Reached</span>
+        <span class="lang-tr hidden">Ulaşılan Genç Katılımcı</span>
+      </div>
+    </div>
+    <div class="p-4.5 rounded-2xl bg-gradient-to-br from-primary/5 to-base-200 border border-primary/20 text-center shadow-sm">
+      <div class="text-3xl font-black text-primary">60+</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-1">
+        <span class="lang-en">NFE Workshops Delivered</span>
+        <span class="lang-tr hidden">Yaygın Eğitim Atölyesi</span>
+      </div>
+    </div>
+    <div class="p-4.5 rounded-2xl bg-gradient-to-br from-primary/5 to-base-200 border border-primary/20 text-center shadow-sm">
+      <div class="text-3xl font-black text-primary">ESC Ready</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-1">
+        <span class="lang-en">Available for Deployment</span>
+        <span class="lang-tr hidden">Gönüllülüğe Hazır Aday</span>
+      </div>
+    </div>
+    <div class="p-4.5 rounded-2xl bg-gradient-to-br from-primary/5 to-base-200 border border-primary/20 text-center shadow-sm">
+      <div class="text-3xl font-black text-primary">TÜBİTAK</div>
+      <div class="text-xs font-semibold text-base-content/75 mt-1">
+        <span class="lang-en">Research Grantee</span>
+        <span class="lang-tr hidden">Ulusal Araştırma Desteği</span>
+      </div>
+    </div>
   </div>
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+  <!-- Special ESC & Field Media Banner -->
+  <div class="card bg-gradient-to-r from-primary to-primary/85 text-white p-6 rounded-2xl shadow-lg mb-10">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div>
+        <span class="badge bg-secondary text-secondary-content font-bold border-none mb-2">
+          <span class="lang-en">🇪🇺 ESC Host Organization Note</span>
+          <span class="lang-tr hidden">🇪🇺 ESC Ev Sahibi Kuruluş Notu</span>
+        </span>
+        <h3 class="text-xl font-bold">
+          <span class="lang-en">Diplomatic Consecutive Translation & 40+ Field Photos</span>
+          <span class="lang-tr hidden">Büyükelçilik Çevirmenliği & 40+ Saha Görseli</span>
+        </h3>
+        <p class="text-xs text-white/90 mt-1 max-w-xl">
+          <span class="lang-en">Watch the live consecutive translation video for Estonian Ambassador Väino Reinart and explore on-the-ground youth training archives from Strasbourg, Tirana, and Ankara.</span>
+          <span class="lang-tr hidden">Estonya Büyükelçisi Väino Reinart canlı çevirmenlik video kaydını ve Strasbourg, Tiran, Ankara saha fotoğraflarını inceleyin.</span>
+        </p>
+      </div>
+      <a href="/gallery" class="btn bg-white text-primary hover:bg-white/90 border-none rounded-xl font-bold px-5 shrink-0">
+        <span class="lang-en">Open Media Gallery ↗</span>
+        <span class="lang-tr hidden">Galeriye Git ↗</span>
+      </a>
+    </div>
   </div>
 
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+  <!-- Featured Highlights Section -->
+  <div>
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl font-bold tracking-tight text-base-content flex items-center gap-2">
+        <span>⭐</span>
+        <span class="lang-en">Key Highlights & Competencies</span>
+        <span class="lang-tr hidden">Öne Çıkan Çalışmalar</span>
+      </h3>
+      <a href="/projects" class="text-xs font-bold text-primary hover:underline">
+        <span class="lang-en">View All Projects →</span>
+        <span class="lang-tr hidden">Tüm Projeleri Gör →</span>
+      </a>
+    </div>
+
+    <!-- 1. Axis Digital Tool -->
+    <HorizontalCard
+      title="Axis: Computational Foreign Policy Platform"
+      img="/post_img.webp"
+      desc="An open-source quantitative platform modeling foreign policy decision trees, deterrence matrices, and crisis escalation vectors using Python and quantitative IR methodologies."
+      url="https://kuzeygeb.github.io/axis/"
+      badge="Live Web App"
+      tags={["Computational IR", "Decision Theory", "Open Source", "Python"]}
+    />
+    <div class="divider my-0 opacity-40"></div>
+
+    <!-- 2. Inclusive Resilience Albania -->
+    <HorizontalCard
+      title="Inclusive Resilience Project: Paralympic Youth & Climate Adaptation (Tirana, Albania)"
+      img="/Inclusive resillience albania.jpg"
+      desc="Facilitated European non-formal education workshops in Tirana for young Paralympic athletes and youth leaders on disaster resilience and climate adaptation under Erasmus+ KA220-YOU."
+      url="/gallery"
+      badge="Erasmus+ Albania"
+      tags={["Disability Inclusion", "Paralympic Sports", "Climate Resilience"]}
+    />
+    <div class="divider my-0 opacity-40"></div>
+
+    <!-- 3. Hearken the Youth France -->
+    <HorizontalCard
+      title="Hearken the Youth Project: Deaf Youth Inclusion (Strasbourg, France)"
+      img="/Hearken the youth france.jpg"
+      desc="Cross-border youth capacity building in Strasbourg, France. Designed accessible sports and environmental toolkits tailored for deaf youth and European youth workers."
+      url="/gallery"
+      badge="Erasmus+ France"
+      tags={["Social Inclusion", "Deaf Youth", "Strasbourg", "Erasmus+"]}
+    />
+    <div class="divider my-0 opacity-40"></div>
+
+    <!-- 4. Diplomatic Interpreting -->
+    <HorizontalCard
+      title="Diplomatic Consecutive Translation: Estonian Ambassador Väino Reinart"
+      img="/Estonya Büyükelçisi Väino Reinart resepsiyonunda.jpg"
+      desc="Provided high-level consecutive translation and bilateral liaison support during official reception meetings with H.E. Väino Reinart, Ambassador of Estonia."
+      url="/gallery"
+      badge="Diplomatic Liaison"
+      tags={["Diplomacy", "Consecutive Translation", "Bilateral Affairs"]}
+    />
+  </div>
 </BaseLayout>

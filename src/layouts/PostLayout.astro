@@ -1,43 +1,128 @@
 ---
 import { type BlogSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
 
 export interface Props extends BlogSchema {}
 
-const { title, description, pubDate, updatedDate, heroImage, badge, tags = [] } = Astro.props;
-dayjs.extend(localizedFormat);
-const displayDate = dayjs(pubDate).format("ll")
-import { Image } from "astro:assets";
+const { 
+  title, 
+  title_tr,
+  description, 
+  description_tr,
+  pubDate, 
+  updatedDate, 
+  heroImage, 
+  badge, 
+  badge_tr,
+  author = "Kuzey Çağan Gebrecioğlu", 
+  readTime = "5 min read", 
+  readTime_tr = "5 dk okuma",
+  tags = [] 
+} = Astro.props;
+
+const displayDate = pubDate ? new Date(pubDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : "";
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}, ogType="article">
-  <main class="md:flex md:justify-center">
-    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
-      {heroImage && <Image width={750} height={422} format="webp" src={heroImage} alt={title} class="w-full mb-6" />}
-      <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
-      <br />
-      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
-      {
-        tags &&
-          tags.map((tag) => (
-            <a href={`/blog/tag/${tag}`} class="badge badge-outline ml-2 no-underline">
-              {tag}
-            </a>
-          ))
-      }
-      {
-        updatedDate && (
-          <div>
-            {" "}
-            Last updated on <time>{updatedDate}</time>{" "}
+<BaseLayout title={title} description={description} image={heroImage} ogType="article" sideBarActiveItemID="blog">
+  <div class="max-w-[800px] mx-auto">
+    <!-- Back to blog button -->
+    <div class="mb-6">
+      <a href="/blog" class="btn btn-ghost btn-xs gap-1 hover:bg-base-200">
+        <span class="lang-en">← Back to All Articles</span>
+        <span class="lang-tr hidden">← Tüm Blog Yazılarına Dön</span>
+      </a>
+    </div>
+
+    <!-- Article Header -->
+    <header class="mb-8">
+      <div class="flex items-center gap-2 mb-3 flex-wrap">
+        {badge && (
+          <span class="badge badge-primary font-semibold">
+            <span class="lang-en">{badge}</span>
+            <span class="lang-tr hidden">{badge_tr || badge}</span>
+          </span>
+        )}
+        <span class="text-xs text-base-content/60 font-medium">{displayDate}</span>
+        <span class="text-xs text-base-content/40">•</span>
+        <span class="text-xs text-base-content/60">
+          <span class="lang-en">{readTime}</span>
+          <span class="lang-tr hidden">{readTime_tr || readTime}</span>
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-base-content leading-tight mb-4">
+        <span class="lang-en">{title}</span>
+        <span class="lang-tr hidden">{title_tr || title}</span>
+      </h1>
+
+      <p class="text-lg text-base-content/80 leading-relaxed font-normal mb-6">
+        <span class="lang-en">{description}</span>
+        <span class="lang-tr hidden">{description_tr || description}</span>
+      </p>
+
+      <!-- Author Card -->
+      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-base-200/60 border border-base-300">
+        <div class="avatar">
+          <div class="w-10 h-10 rounded-full ring-2 ring-primary/40 overflow-hidden">
+            <img 
+              src="/profil fotoğrafı.jpg" 
+              alt={author} 
+              class="object-cover w-full h-full"
+              width="40"
+              height="40"
+            />
           </div>
-        )
-      }
-      <div class="divider my-2"></div>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-base-content">{author}</div>
+          <div class="text-[11px] text-base-content/75">
+            <span class="lang-en">IR Strategist · Youth Worker · Policy Researcher</span>
+            <span class="lang-tr hidden">Uİ Stratejisti · Gençlik Çalışanı · Araştırmacı</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    {heroImage && (
+      <div class="w-full max-h-[420px] rounded-2xl overflow-hidden mb-8 border border-base-300 shadow-md bg-base-300">
+        <img 
+          src={heroImage} 
+          alt={title} 
+          class="w-full h-full object-cover" 
+          onerror="this.onerror=null; this.src='/post_img.webp';"
+        />
+      </div>
+    )}
+
+    <!-- Main Content -->
+    <article class="prose prose-md max-w-none text-base-content/90 leading-relaxed font-normal prose-headings:text-base-content prose-a:text-primary hover:prose-a:underline prose-strong:text-base-content border-b border-base-300 pb-10 mb-8">
       <slot />
     </article>
-  </main>
+
+    <!-- Tags Footer -->
+    {tags && tags.length > 0 && (
+      <div class="flex items-center gap-2 flex-wrap mb-10">
+        <span class="text-xs font-semibold text-base-content/60">
+          <span class="lang-en">Tags:</span>
+          <span class="lang-tr hidden">Etiketler:</span>
+        </span>
+        {tags.map((tag) => (
+          <span class="badge badge-outline text-xs">#{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "author": {
+      "@type": "Person",
+      "name": author || "Kuzey Çağan Gebrecioğlu"
+    },
+    "datePublished": pubDate,
+    "description": description,
+    "image": heroImage
+  })} />
 </BaseLayout>
